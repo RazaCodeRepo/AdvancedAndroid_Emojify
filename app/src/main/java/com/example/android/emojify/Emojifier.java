@@ -59,13 +59,19 @@ class Emojifier {
         }
 
         // TODO (2): Iterate through the faces, calling getClassifications() for each face.
+        for(int i=0;i<faces.size();i++){
+            Face face = faces.valueAt(i);
+            getClassifications(face);
+        }
 
         // Release the detector
         detector.release();
     }
 
     // TODO (1): Create a static method called getClassifications() which logs the probability of each eye being open and that the person is smiling.
-    public static void getClassifications(){
-
+    public static void getClassifications(Face face){
+        Log.v(LOG_TAG,"probablity of face smiling = " + face.getIsSmilingProbability() );
+        Log.v(LOG_TAG,"probablity of left eye open =" + face.getIsLeftEyeOpenProbability());
+        Log.v(LOG_TAG,"probablity of right eye open =" + face.getIsRightEyeOpenProbability());
     }
 }
